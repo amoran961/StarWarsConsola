@@ -28,7 +28,7 @@ SECRET_KEY = 'lrvry674@+pslszf6jxftdx-yq$p95b30dl0era_r8-xstapsm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['starwarsconsola.herokuapp.com']
 
 
 # Application definition
