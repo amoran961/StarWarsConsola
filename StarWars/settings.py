@@ -16,7 +16,7 @@ import os
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-PROJECT_ROOT  = os.path.normpath(os.path.abspath(__file__))
+PROJECT_ROOT  = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
