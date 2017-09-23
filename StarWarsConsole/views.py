@@ -38,44 +38,44 @@ def register(request):
     return HttpResponse(template.render(variables,request))
 
 def register_juego(request, json_request):
-    if request.method == 'POST':
-        parsed_json = json.loads(json_string)
-        usuario=parsed_json['id']
-        clave=parsed_json['password']
-        queryset = User.objects.filter(username__iexact=usuario)
-        if queryset:
-            result=False
-            return JsonResponse(result)
-        else:
-            user1 = User.objects.create_user(
-            username=usuario,
-            password=clave,
-            )
-            user.save()
-            usuario1 = Usuario.objects.create(
-            user=user1,
-            tipo="jugador",
-            )
-            result=True
-            return JsonResponse(result)
+#    if request.method == 'POST':
+    parsed_json = json.loads(json_string)
+    usuario=parsed_json['id']
+    clave=parsed_json['password']
+    queryset = User.objects.filter(username__iexact=usuario)
+    if queryset:
+        result=False
+        return JsonResponse(result)
     else:
-        return pass
+        user1 = User.objects.create_user(
+        username=usuario,
+        password=clave,
+        )
+        user.save()
+        usuario1 = Usuario.objects.create(
+        user=user1,
+        tipo="jugador",
+        )
+        result=True
+        return JsonResponse(result)
+#else:
+#    return pass
 
 def login_juego(request, json_request):
-    if request.method == 'POST':
-        parsed_json = json.loads(json_string)
-        usuario=parsed_json['id']
-        clave=parsed_json['password']
-        queryset = User.objects.filter(username__iexact=usuario)
-        user=User.objects.get(username=usuario)
-        if (queryset) and (clave == user.password):
-            result=True
-            return JsonResponse(result)
-        else:
-            result=False
-            return JsonResponse(result
-        else:
-            return pass
+#    if request.method == 'POST':
+    parsed_json = json.loads(json_string)
+    usuario=parsed_json['id']
+    clave=parsed_json['password']
+    queryset = User.objects.filter(username__iexact=usuario)
+    user=User.objects.get(username=usuario)
+    if (queryset) and (clave == user.password):
+        result=True
+        return JsonResponse(result)
+    else:
+        result=False
+        return JsonResponse(result
+#    else:
+#        return pass
 
 def register_success(request):
     template = get_template('register_success.html')
