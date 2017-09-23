@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 PROJECT_ROOT  = os.path.dirname(os.path.abspath(__file__))
 
-
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))  #AGREGADO
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -56,6 +56,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'StarWars.urls'
 
+TEMPLATE_DIRS = os.path.join(SETTINGS_PATH, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -89,7 +91,6 @@ DATABASES = {
         'HOST': 'ec2-54-83-205-71.compute-1.amazonaws.com'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
