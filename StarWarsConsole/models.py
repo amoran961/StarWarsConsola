@@ -6,4 +6,4 @@ from django.db.models.signals import post_save
 
 class Usuario(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
-    tipo=models.Charfield(max_length=13)
+    tipo=models.CharField(max_length=13)
