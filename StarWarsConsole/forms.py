@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from StarWarsConsole.models import Usuario
 
 class RegistrationForm(forms.Form):
-    usuario = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Usuario"), error_messages={ 'invalid': _("Usuario sólo puede tener letras, números y _.") })
+    usuario = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Usuario"), error_messages={ 'invalid': _("Usuario solo puede tener letras, numeros y _.") })
     clave = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Clave"))
     clave_confirmar = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Clave (nuevamente)"))
 
