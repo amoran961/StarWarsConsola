@@ -5,7 +5,7 @@ from StarWarsConsole.views import register, register_success, logout_page, home
 
 urlpatterns = [
     url(r'^logout/$', logout_page, name='logout_page'),
-    url(r'^$', login, name='login'),
+    url(r'^login/$', login, name='login'),
     url(r'^register/$', register, name='register'),
     url(r'^register/success/$', register_success, name='register_success'),
     url(r'^home/$', home, name='home')
