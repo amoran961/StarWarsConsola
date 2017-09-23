@@ -17,7 +17,7 @@ import json
 @csrf_protect
 def register(request):
     if request.method == 'POST':
-        form=RegisterForm(request.POST)
+        form=RegistrationForm(request.POST)
         if form.is_valid():
             user = User.objects.create_user(
             username=form.cleaned_data['usuario'],
