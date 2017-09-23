@@ -28,7 +28,7 @@ def register(request):
             user=user,
             tipo="administrador",
             )
-            return HttpResponseRedirect('/register/success/')
+            return HttpResponseRedirect('/StarWarsConsole/register/success/')
     else:
         form=RegistrationForm()
     variables={
