@@ -59,7 +59,9 @@ ROOT_URLCONF = 'StarWars.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+        'StarWarsConsole/templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,8 +82,11 @@ WSGI_APPLICATION = 'StarWars.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ds2dkqsank5eg',
+        'USER': 'nmedepnjesyrnm',
+        'PASSWORD': '68cf2f07be8df24812d45a2003e9befd116b58e7c3d0abe2308c602e001cd426'
+        'HOST': 'ec2-54-83-205-71.compute-1.amazonaws.com'
     }
 }
 
