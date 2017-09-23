@@ -73,7 +73,7 @@ def login_juego(request, json_request):
         return JsonResponse(result)
     else:
         result=False
-        return JsonResponse(result
+        return JsonResponse(result)
 #    else:
 #        return pass
 
