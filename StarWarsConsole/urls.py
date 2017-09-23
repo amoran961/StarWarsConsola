@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from . import views
 from django.contrib.auth.views import login
 from StarWarsConsole.views import register, register_success, logout_page, home
