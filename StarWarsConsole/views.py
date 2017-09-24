@@ -52,7 +52,7 @@ def login(request):
                 return HttpResponseRedirect('/StarWarsConsole/accounts/login/')
     else:
         form=LoginForm()
-    variable={
+    variables={
     'form':form
     }
     template = get_template('login.html')
