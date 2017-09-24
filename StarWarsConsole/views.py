@@ -112,7 +112,7 @@ def home(request):
     user=request.user
     variables={
     'user': request.user,
-    'usuario': usuario.objects.get(user=user.id),
+    'usuario': Usuario.objects.get(user=user.id),
     }
     template = get_template('home.html')
     return HttpResponse(template.render(variables, request))
