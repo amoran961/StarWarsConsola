@@ -56,8 +56,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'StarWars.urls'
 
-TEMPLATE_DIRS = os.path.join(SETTINGS_PATH, 'templates')
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -135,5 +133,3 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)

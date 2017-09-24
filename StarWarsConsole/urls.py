@@ -1,7 +1,6 @@
 from django.conf.urls import url
 from . import views
-from django.contrib.auth.views import login
-from StarWarsConsole.views import register, register_success, logout_page, home
+from StarWarsConsole.views import register, register_success, logout_page, home, login
 
 urlpatterns = [
     url(r'^logout/$', logout_page, name='logout_page'),

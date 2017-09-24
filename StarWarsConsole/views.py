@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from StarWarsConsole.forms import *
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
@@ -13,6 +13,7 @@ from django.http import HttpResponse
 from StarWarsConsole.models import Usuario
 from django.contrib.auth.models import User
 import json
+
 
 @csrf_protect
 def register(request):
@@ -35,6 +36,26 @@ def register(request):
     'form':form
     }
     template = get_template('register.html')
+    return HttpResponse(template.render(variables,request))
+
+def login(request):
+    if request.method == 'POST':
+        form=LoginForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return HttpResponseRedirect('/StarWarsConsole/home/')
+            else:
+                return HttpResponseRedirect('/StarWarsConsole/accounts/login/')
+    else:
+        form=LoginForm()
+    variable={
+    'form':form
+    }
+    template = get_template('login.html')
     return HttpResponse(template.render(variables,request))
 
 def register_juego(request, json_request):
