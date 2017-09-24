@@ -38,7 +38,7 @@ def register(request):
     template = get_template('register.html')
     return HttpResponse(template.render(variables,request))
 
-def login(request):
+def authlogin(request):
     if request.method == 'POST':
         form=LoginForm(request.POST)
         if form.is_valid():
