@@ -21,3 +21,7 @@ class RegistrationForm(forms.Form):
             if self.cleaned_data['clave'] != self.cleaned_data['clave']:
                 raise forms.ValidationError(_("Las claves no coinciden."))
         return self.cleaned_data
+
+class LoginForm(forms.Form):
+    usuario = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Usuario"), error_messages={ 'invalid': _("Usuario solo puede tener letras, numeros y _.") })
+    clave = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Clave"))
