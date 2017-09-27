@@ -3,8 +3,23 @@
 {% block head %}Login{% endblock %}
 {% block content %}
     {% if form.errors %}
-        <p>Tu usuario y clave no coinciden.</p>
+        <p style="color:white">Tu usuario y clave no coinciden.</p>
     {% endif %}
+<style>
+  div.solid{
+    border-top:  2px #28a4c9 solid;
+    border-left: 2px #28a4c9 solid;
+    border-right: 2px #28a4c9 solid;
+    border-bottom: 2px #28a4c9 solid;
+    background-color: white;
+    padding: 10px;
+  }
+  body{
+      background: url(https://wallpapertag.com/wallpaper/full/6/b/f/338821-star-wars-hd-wallpaper-3840x2160-for-retina.jpg) no-repeat center center fixed;
+      background-size: cover;
+  }
+</style>
+
     <form method="post" action=".">{% csrf_token %}
         <table border="0">
             {{ form.as_table }}
