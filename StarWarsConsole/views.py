@@ -82,21 +82,19 @@ def register_juego(request, json_request):
 #else:
 #    return pass
 
-def login_juego(request, json_request):
-#    if request.method == 'POST':
-    parsed_json = json.loads(json_string)
-    usuario=parsed_json['id']
-    clave=parsed_json['password']
-    queryset = User.objects.filter(username__iexact=usuario)
-    user=User.objects.get(username=usuario)
-    if (queryset) and (clave == user.password):
-        result=True
-        return JsonResponse(result)
-    else:
-        result=False
-        return JsonResponse(result)
-#    else:
-#        return pass
+def login_juego(request):
+    if request.method == 'POST':
+        jsondict = request.data
+        usuario = ['id']
+        password = jsondict['password']
+        user = authenticate(request, username=usuario, password=password)
+        if user is not None:
+            temp = "true"
+        else:
+            temp = "false"
+        jsonreturn = {"result":temp}
+        jsonstring = json.dumps(jsonreturn)
+        return JsonResponse(json_string)
 
 def register_success(request):
     template = get_template('register_success.html')
