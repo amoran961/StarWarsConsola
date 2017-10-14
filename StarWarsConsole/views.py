@@ -13,7 +13,15 @@ from django.http import HttpResponse
 from StarWarsConsole.models import Usuario
 from django.contrib.auth.models import User
 import json
-
+from django.http.response import JsonResponse
+from django.shortcuts import render
+from rest_framework.renderers import JSONRenderer
+from django.http import HttpResponse
+from rest_framework.decorators import api_view
+from rest_framework.parsers import JSONParser
+from rest_framework.decorators import parser_classes
+import requests
+from requests.auth import HTTPBasicAuth
 
 @csrf_protect
 def register(request):
@@ -81,6 +89,7 @@ def register_juego(request, json_request):
         return JsonResponse(result)
 #else:
 #    return pass
+@api_view
 
 def login_juego(request):
     if request.method == 'POST':
