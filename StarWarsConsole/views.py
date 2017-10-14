@@ -118,7 +118,7 @@ def home(request):
     usuario=Usuario.objects.get(user=user.id)
     variables={
     'user': user,
-    'usuario': usuario.user.id,
+    'usuario': usuario.user.username,
     'tipo': usuario.tipo,
     }
     template = get_template('home.html')
