@@ -66,9 +66,10 @@ def authlogin(request):
     template = get_template('login.html')
     return HttpResponse(template.render(variables,request))
 
-'''
+
 def register_juego(request, json_request):
-    if request.method == 'POST':
+    pass
+'''    if request.method == 'POST':
     if request.method == 'POST':
         jsondict = request.data
         usuario = jsondict['id']
