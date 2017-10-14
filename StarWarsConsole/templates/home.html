@@ -1,7 +1,15 @@
 {% extends "base.html" %}
-{% block title %}Juego Star Wars{% endblock %}
+
+<h1 style="color:white">Juego Star Wars</h1>
 {% block head %}Juego Star Wars{% endblock %}
 {% block content %}
-    <p>Bienvenido {{ user.username }}</p>
+    <h2 style="color:white">Bienvenido {{ user.username }}</h2>
     <p><a href="/StarWarsConsole/logout/">Logout</a></p>
+    <style>
+    body{
+      background: url(https://wallpapertag.com/wallpaper/middle/b/a/f/338883-free-download-star-wars-hd-wallpaper-1920x1080-mac.jpg) no-repeat center center fixed;
+      background-size: cover;
+
+    }
+    </style>
 {% endblock %}
