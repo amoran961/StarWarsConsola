@@ -93,8 +93,7 @@ def login_juego(request):
         else:
             temp = "false"
         jsonreturn = {"result":temp}
-        jsonstring = json.dumps(jsonreturn)
-        return JsonResponse(json_string)
+        return JsonResponse(jsonreturn)
 
 def register_success(request):
     template = get_template('register_success.html')
