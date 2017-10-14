@@ -69,11 +69,11 @@ def authlogin(request):
 
 def register_juego(request, json_request):
     pass
-'''    if request.method == 'POST':
+'''
     if request.method == 'POST':
         jsondict = request.data
         usuario = jsondict['id']
-    password = jsondict['password']
+        password = jsondict['password']
         try:
             user = User.objects.get(username__iexact=self.cleaned_data['usuario'])
         except User.DoesNotExist:
@@ -106,7 +106,6 @@ def register_juego(request, json_request):
 #else:
 #    return pass
 '''
-
 @api_view(['POST'])
 def login_juego(request):
     if request.method == 'POST':
@@ -118,8 +117,8 @@ def login_juego(request):
             temp = "true"
         else:
             temp = "false"
-        jsonreturn = {"result":temp}
-        return JsonResponse(jsonreturn)
+        jsonreturn = [{"result":temp}]
+        return JsonResponse(jsonreturn, safe=False)
 
 def register_success(request):
     template = get_template('register_success.html')
