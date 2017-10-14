@@ -1,6 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
-{% block head %}Login{% endblock %}
+{% block title %}<h1 style="color:white">Login</h1>{% endblock %}
+{% block head %}<p style="color:white">Login</p>{% endblock %}
 {% block content %}
     {% if form.errors %}
         <p style="color:white">Tu usuario y clave no coinciden.</p>
@@ -21,7 +21,7 @@
 </style>
 
     <form method="post" action=".">{% csrf_token %}
-        <table border="0">
+        <table border="0" style="color:white">
             {{ form.as_table }}
         </table>
         <input type="submit" value="Login" />
