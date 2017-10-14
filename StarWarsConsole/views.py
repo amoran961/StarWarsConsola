@@ -85,6 +85,7 @@ def register_juego(request, json_request):
             usuario1 = Usuario.objects.create(
             user=user1,
             tipo="jugador",
+            )
         jsonreturn = [{"result":temp}]
         return JsonResponse(jsonreturn, safe=False)
 
