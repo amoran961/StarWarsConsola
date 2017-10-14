@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 <h1 style="color:white">Registrar nuevo usuario</h1>
-{% block head %}Registrar nuevo usuario{% endblock %}
+{% block head %}<h2 style="color:white">Registrar nuevo usuario</h2>{% endblock %}
 {% block content %}
     <form method="post" action=".">{% csrf_token %}
-        <table border="0">
+        <table border="0" style="color:white">
             {{ form.as_table }}
         </table>
         <input type="submit" value="Registrar" />
