@@ -66,46 +66,28 @@ def authlogin(request):
     template = get_template('login.html')
     return HttpResponse(template.render(variables,request))
 
-
+@api_view(['POST'])
 def register_juego(request, json_request):
-    pass
-'''
     if request.method == 'POST':
         jsondict = request.data
         usuario = jsondict['id']
         password = jsondict['password']
-        try:
-            user = User.objects.get(username__iexact=self.cleaned_data['usuario'])
-        except User.DoesNotExist:
+        user = authenticate(request, username=usuario, password=password)
+        if user is not None:
+            temp = "false"
+        else:
+            temp = "true"
             user1 = User.objects.create_user(
             username=usuario,
             password=clave,
             )
-            user.save()
+            user1.save()
             usuario1 = Usuario.objects.create(
             user=user1,
             tipo="jugador",
-            )
-        raise
+        jsonreturn = [{"result":temp}]
+        return JsonResponse(jsonreturn, safe=False)
 
-    if queryset:
-        result=False
-        return JsonResponse(result)
-    else:
-        user1 = User.objects.create_user(
-        username=usuario,
-        password=clave,
-        )
-        user.save()
-        usuario1 = Usuario.objects.create(
-        user=user1,
-        tipo="jugador",
-        )
-        result=True
-        return JsonResponse(result)
-#else:
-#    return pass
-'''
 @api_view(['POST'])
 def login_juego(request):
     if request.method == 'POST':
@@ -132,9 +114,11 @@ def logout_page(request):
 @login_required
 def home(request):
     user=request.user
+    usuario=Usuario.objects.get(user=user.id)
     variables={
-    'user': request.user,
-    'usuario': Usuario.objects.get(user=user.id),
+    'user': user,
+    'usuario': usuario.user.id,
+    'tipo': usuario.tipo,
     }
     template = get_template('home.html')
     return HttpResponse(template.render(variables, request))
