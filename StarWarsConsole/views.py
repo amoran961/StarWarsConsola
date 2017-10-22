@@ -130,11 +130,16 @@ def login_juego(request):
         usuario = jsondict['id']
         password = jsondict['password']
         user = authenticate(request, username=usuario, password=password)
-        configuration=Configuration.objects.get(configurationid="1")
-        mision=configuration.mision
-        bando=configuration.bando
-        dificultad=configuration.dificultad
-        jsonreturn = [{"result":temp, "mision":mision, "bando":bando, "dificultad":dificultad}]
+        if user is not None:
+            configuration=Configuration.objects.get(configurationid="1")
+            mision=configuration.mision
+            bando=configuration.bando
+            dificultad=configuration.dificultad
+            temp="true"
+            jsonreturn = [{"result":temp, "mision":mision, "bando":bando, "dificultad":dificultad}]
+        else:
+            temp="false"
+            jsonreturn = [{"result":temp}]
         return JsonResponse(jsonreturn, safe=False)
 
 @api_view(['POST'])
