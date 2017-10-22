@@ -72,7 +72,8 @@ def configuration(request):
         form=ConfigurationForm(request.POST)
         if form.is_valid():
             configuration=Configuration.objects.get(configurationid="1")
-            if configuration is not None:
+#            if configuration is not None:
+            if configuration.configurationid == "1":
                 configurationtemp=Configuration.objects.get(configurationid="1").update(
                 mision=form.cleaned_data['mision'],
                 bando=form.cleaned_data['bando'],
