@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+<h1 style="color:white">Cambiar configuración</h1>
+{% block head %}<h2 style="color:white">Cambiar configuración</h2>{% endblock %}
+{% block content %}
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0" style="color:white">
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Aceptar" />
+    </form>
+    <p><a href="/StarWarsConsole/logout/">Logout</a></p>
+    <style>
+    body{
+      background: url(https://wallpapertag.com/wallpaper/middle/b/a/f/338883-free-download-star-wars-hd-wallpaper-1920x1080-mac.jpg) no-repeat center center fixed;
+      background-size: cover;
+    }
+    </style>
+{% endblock %}

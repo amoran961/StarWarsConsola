@@ -66,6 +66,39 @@ def authlogin(request):
     template = get_template('login.html')
     return HttpResponse(template.render(variables,request))
 
+@login_required
+def configuration(request):
+    if request.method == 'POST':
+        form=ConfigurationForm(request.POST)
+        if form.is_valid():
+            configuration=Configuration.objects.get(configurationid="1")
+            if configuration is not None:
+                configurationtemp=Configuration.objects.get(configurationid="1").update(
+                mision=form.cleaned_data['mision'],
+                bando=form.cleaned_data['bando'],
+                dificultad=form.cleaned_data['dificultad'],
+                )
+            else:
+                configurationtemp=Configuration.objects.create(
+                configurationid="1",
+                mision=form.cleaned_data['mision'],
+                bando=form.cleaned_data['bando'],
+                dificultad=form.cleaned_data['dificultad'],
+                )
+            return HttpResponseRedirect('StarWarsConsole/configuration/changed/')
+    else:
+        form=ConfigurationForm()
+    variables={
+    'form':form
+    }
+    template=get_template('configuration.html')
+    return HttpResponse(template.render(variables,request))
+
+def configuration_changed(request):
+    template = get_template('configuration_changed.html')
+    variables = {}
+    return HttpResponse(template.render(variables, request))
+
 @api_view(['POST'])
 def register_juego(request, json_request):
     if request.method == 'POST':
@@ -96,10 +129,31 @@ def login_juego(request):
         usuario = jsondict['id']
         password = jsondict['password']
         user = authenticate(request, username=usuario, password=password)
-        if user is not None:
-            temp = "true"
-        else:
-            temp = "false"
+        configuration=Configuration.objects.get(configurationid="1")
+        mision=configuration.mision
+        bando=configuration.bando
+        dificultad=configuration.dificultad
+        jsonreturn = [{"result":temp, "mision":mision, "bando":bando, "dificultad":dificultad}]
+        return JsonResponse(jsonreturn, safe=False)
+
+@api_view(['POST'])
+def register_record(request):
+    if request.method == 'POST':
+        jsondict = request.data
+        usuario = jsondict['id']
+        record = jsondict['record']
+        mision = jsondict['mision']
+        bando = jsondict['bando']
+        dificultad = jsondict['dificultad']
+        usuariotemp = User.objects.get(username=usuario)
+        record=Record.objects.create(
+        user=usuariotemp,
+        record=record,
+        mision=mision,
+        bando=bando,
+        dificultad=dificultad,
+        )
+        temp = "true"
         jsonreturn = [{"result":temp}]
         return JsonResponse(jsonreturn, safe=False)
 
