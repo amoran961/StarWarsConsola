@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 from django.template import RequestContext
 from django.template.loader import get_template
 from django.http import HttpResponse
-from StarWarsConsole.models import Usuario
+from StarWarsConsole.models import Usuario, Configuration, Record
 from django.contrib.auth.models import User
 import json
 from django.http.response import JsonResponse
