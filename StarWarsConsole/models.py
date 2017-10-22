@@ -10,13 +10,13 @@ class Usuario(models.Model):
 
 class Configuration(models.Model):
     configurationid=models.Charfield(max_length=1)
-    mision=models.Charfield(max_length=35)
+    mision=models.CharField(max_length=35)
     bando=models.CharField(max_length=10)
-    dificultad=models.Charfield(max_length=15)
+    dificultad=models.CharField(max_length=15)
 
 class Record(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
-    record=models.Charfield(max_length=20)
-    mision=models.Charfield(max_length=35)
+    record=models.CharField(max_length=20)
+    mision=models.CharField(max_length=35)
     bando=models.CharField(max_length=10)
-    dificultad=models.Charfield(max_length=15)
+    dificultad=models.CharField(max_length=15)
