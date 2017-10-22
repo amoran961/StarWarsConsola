@@ -25,3 +25,12 @@ class RegistrationForm(forms.Form):
 class LoginForm(forms.Form):
     usuario = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Usuario"), error_messages={ 'invalid': _("Usuario solo puede tener letras, numeros y _.") })
     clave = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Clave"))
+
+#revisar el campo choices y cleaned data
+class ConfigurationForm(forms.Form):
+    CHOICESM = [("Asalto a la luna de Endor", "Asalto a la luna de Endor"), ("Ataque a la Estrella de la Muerte", "Ataque a la Estrella de la Muerte")]
+    mision = forms.ChoiceField(widget=forms.Select, choices=CHOICESM, label=_("Mision"))
+    CHOICESB = [("Rebeldes", "Rebeldes"), ("Imperio", "Imperio")]
+    bando = forms.ChoiceField(widget=forms.Select, choices=CHOICESB, label=_("Bando"))
+    CHOICESD = [("Fácil", "Fácil"), ("Intermedio", "Intermedio"), ("Difícil", "Difícil")]
+    dificultad = forms.ChoiceField(widget=forms.Select, choices=CHOICESD, label=_("Dificultad"))
