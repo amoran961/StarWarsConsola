@@ -172,10 +172,14 @@ def logout_page(request):
 def home(request):
     user=request.user
     usuario=Usuario.objects.get(user=user.id)
+    configuration=Configuration.objects.get(id=1)
     variables={
     'user': user,
     'usuario': usuario.user.username,
     'tipo': usuario.tipo,
+    'mision': configuration.mision,
+    'bando': configuration.bando,
+    'dificultad': configuration.dificultad,
     }
     template = get_template('home.html')
     return HttpResponse(template.render(variables, request))
