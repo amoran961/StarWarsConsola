@@ -20,8 +20,6 @@ from django.http import HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from rest_framework.decorators import parser_classes
-import requests
-from requests.auth import HTTPBasicAuth
 
 @csrf_protect
 def register(request):
@@ -71,17 +69,15 @@ def configuration(request):
     if request.method == 'POST':
         form=ConfigurationForm(request.POST)
         if form.is_valid():
-            configuration=Configuration.objects.get(configurationid="1")
-#            if configuration is not None:
-            if configuration.configurationid == "1":
-                configurationtemp=Configuration.objects.get(configurationid="1").update(
+            configuration=Configuration.objects.get(id="1")
+            if configuration is not None:
+                configurationtemp=Configuration.objects.get(id="1").save(
                 mision=form.cleaned_data['mision'],
                 bando=form.cleaned_data['bando'],
                 dificultad=form.cleaned_data['dificultad'],
                 )
             else:
                 configurationtemp=Configuration.objects.create(
-                configurationid="1",
                 mision=form.cleaned_data['mision'],
                 bando=form.cleaned_data['bando'],
                 dificultad=form.cleaned_data['dificultad'],

@@ -9,7 +9,6 @@ class Usuario(models.Model):
     tipo=models.CharField(max_length=13)
 
 class Configuration(models.Model):
-    configurationid=models.CharField(max_length=1)
     mision=models.CharField(max_length=35)
     bando=models.CharField(max_length=10)
     dificultad=models.CharField(max_length=15)
