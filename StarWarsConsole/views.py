@@ -78,11 +78,10 @@ def configuration(request):
                 )
             else:
                 configuration=Configuration.objects.get(id=1)
-                configurationtemp=configuration.save(
-                mision=form.cleaned_data['mision'],
-                bando=form.cleaned_data['bando'],
-                dificultad=form.cleaned_data['dificultad'],
-                )
+                configuration.mision = form.cleaned_data['mision']
+                configuration.bando = form.cleaned_data['bando']
+                configuration.dificultad = form.cleaned_data['bando']
+                configuration.save()
             return HttpResponseRedirect('/StarWarsConsole/configuration/changed/')
     else:
         form=ConfigurationForm()
