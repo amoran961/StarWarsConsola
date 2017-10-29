@@ -69,19 +69,11 @@ def configuration(request):
     if request.method == 'POST':
         form=ConfigurationForm(request.POST)
         if form.is_valid():
-            configuration=Configuration.objects.get(id="1")
-            if configuration is not None:
-                configurationtemp=Configuration.objects.get(id="1").save(
-                mision=form.cleaned_data['mision'],
-                bando=form.cleaned_data['bando'],
-                dificultad=form.cleaned_data['dificultad'],
-                )
-            else:
-                configurationtemp=Configuration.objects.create(
-                mision=form.cleaned_data['mision'],
-                bando=form.cleaned_data['bando'],
-                dificultad=form.cleaned_data['dificultad'],
-                )
+            configurationtemp=Configuration.objects.get(id="1").save(
+            mision=form.cleaned_data['mision'],
+            bando=form.cleaned_data['bando'],
+            dificultad=form.cleaned_data['dificultad'],
+            )
             return HttpResponseRedirect('StarWarsConsole/configuration/changed/')
     else:
         form=ConfigurationForm()
