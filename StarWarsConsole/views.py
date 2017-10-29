@@ -83,7 +83,7 @@ def configuration(request):
                 bando=form.cleaned_data['bando'],
                 dificultad=form.cleaned_data['dificultad'],
                 )
-            return HttpResponseRedirect('StarWarsConsole/configuration/changed/')
+            return HttpResponseRedirect('/StarWarsConsole/configuration/changed/')
     else:
         form=ConfigurationForm()
     variables={
