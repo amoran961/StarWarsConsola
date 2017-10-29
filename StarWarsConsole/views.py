@@ -127,7 +127,7 @@ def login_juego(request):
         password = jsondict['password']
         user = authenticate(request, username=usuario, password=password)
         if user is not None:
-            configuration=Configuration.objects.get(configurationid="1")
+            configuration=Configuration.objects.get(id=1)
             mision=configuration.mision
             bando=configuration.bando
             dificultad=configuration.dificultad
