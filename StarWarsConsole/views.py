@@ -69,7 +69,7 @@ def configuration(request):
     if request.method == 'POST':
         form=ConfigurationForm(request.POST)
         if form.is_valid():
-            configuration=Configuration.objects.get(id=1)
+            configuration=Configuration.objects.filter(id=1)
             if not configuration:
                 configurationtemp=Configuration.objects.create(
                 mision=form.cleaned_data['mision'],
@@ -77,6 +77,7 @@ def configuration(request):
                 dificultad=form.cleaned_data['dificultad'],
                 )
             else:
+                configuration=Configuration.objects.get(id=1)
                 configurationtemp=configuration.save(
                 mision=form.cleaned_data['mision'],
                 bando=form.cleaned_data['bando'],
