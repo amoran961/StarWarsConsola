@@ -70,7 +70,7 @@ def configuration(request):
         form=ConfigurationForm(request.POST)
         if form.is_valid():
             configuration=Configuration.objects.get(id=1)
-            if not conf:
+            if not configuration:
                 configurationtemp=Configuration.objects.create(
                 mision=form.cleaned_data['mision'],
                 bando=form.cleaned_data['bando'],
