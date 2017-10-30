@@ -109,7 +109,7 @@ def register_juego(request):
             temp = "true"
             user1 = User.objects.create_user(
             username=usuario,
-            password=clave,
+            password=password,
             )
             user1.save()
             usuario1 = Usuario.objects.create(
