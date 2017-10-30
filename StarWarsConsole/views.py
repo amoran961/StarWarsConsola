@@ -97,7 +97,7 @@ def configuration_changed(request):
     return HttpResponse(template.render(variables, request))
 
 @api_view(['POST'])
-def register_juego(request, json_request):
+def register_juego(request):
     if request.method == 'POST':
         jsondict = request.data
         usuario = jsondict['id']
