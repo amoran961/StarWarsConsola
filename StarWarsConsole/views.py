@@ -143,7 +143,7 @@ def register_record(request):
     if request.method == 'POST':
         jsondict = request.data
         usuario = jsondict['id']
-        record = jsondict['record']
+        record = int(jsondict['record'])
         usuariotemp = User.objects.get(username=usuario)
         record=Record.objects.create(
         record=record,
