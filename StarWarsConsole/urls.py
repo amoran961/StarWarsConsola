@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from . import views
-from StarWarsConsole.views import register, register_success, logout_page, home, authlogin, login_juego, register_juego, configuration, configuration_changed, register_record
+from StarWarsConsole.views import register, register_success, logout_page, home, authlogin, login_juego, register_juego, configuration, configuration_changed, register_record, ranking
 
 urlpatterns = [
     url(r'^logout/$', logout_page, name='logout_page'),
@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^login_juego/$', login_juego),
     url(r'^register_juego/$', register_juego),
     url(r'^register_record/$', register_record),
+    url(r'^ranking/$', ranking),
 ]
