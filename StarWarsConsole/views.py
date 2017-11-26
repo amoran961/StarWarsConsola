@@ -144,20 +144,41 @@ def register_record(request):
         jsondict = request.data
         usuario = jsondict['id']
         record = jsondict['record']
-        mision = jsondict['mision']
-        bando = jsondict['bando']
-        dificultad = jsondict['dificultad']
         usuariotemp = User.objects.get(username=usuario)
         record=Record.objects.create(
-        user=usuariotemp,
         record=record,
-        mision=mision,
-        bando=bando,
-        dificultad=dificultad,
+        user=usuariotemp,
         )
         temp = "true"
         jsonreturn = [{"result":temp}]
         return JsonResponse(jsonreturn, safe=False)
+
+@api_view(['POST'])
+def ranking(request):
+    if request.method == 'POST':
+        ranking_temp = Record.objects.order_by('-record')
+        total = len(ranking_temp)
+        i = 0
+        ranking = []
+        if total == 0:
+            temp="false"
+            jsonreturn = [{"result":temp}]
+        else:
+            if total < 11:
+                for record in ranking_temp:
+                    ranking.append(record)
+                    i=i+1
+            else:
+                for record in ranking_temp:
+                    if i < 10:
+                        ranking.append(record)
+                        i=i+1
+            temp="true"
+            jsonreturn = [{"result":temp, "total":i, "ranking":ranking}]
+        return JsonResponse(jsonreturn, safe=False)
+
+def enviar_record(request):
+    pass
 
 def register_success(request):
     template = get_template('register_success.html')
