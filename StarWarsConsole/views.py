@@ -144,7 +144,7 @@ def register_record(request):
         jsondict = request.data
         usuario = jsondict['id']
         record = jsondict['record']
-        usuariotemp = User.objects.filter(username=usuario)
+        usuariotemp = User.objects.get(username=usuario)
         record=Record.objects.create(
         user=usuariotemp,
         record=record,
