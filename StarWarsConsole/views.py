@@ -166,14 +166,19 @@ def ranking(request):
         else:
             if total < 11:
                 for record in ranking_temp:
-                    ranking.append(record)
                     i=i+1
+                    ranking.append(i)
+                    ranking.append(record.user.username)
+                    ranking.append(record.record)
             else:
                 for record in ranking_temp:
                     if i < 10:
-                        ranking.append(record)
                         i=i+1
+                        ranking.append(i)
+                        ranking.append(record.user.username)
+                        ranking.append(record.record)
             temp="true"
+#            json.dumps  ({"result":temp, "total":i, "ranking":ranking})
             jsonreturn = [{"result":temp, "total":i, "ranking":ranking}]
         return JsonResponse(jsonreturn, safe=False)
 
