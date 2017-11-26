@@ -144,10 +144,10 @@ def register_record(request):
         jsondict = request.data
         usuario = jsondict['id']
         record = int(jsondict['record'])
-        usuariotemp = User.objects.get(username=usuario)
+        usuariotemp = User.objects.get(user=usuario)
         record=Record.objects.create(
-        record=record,
         user=usuariotemp,
+        record=record,
         )
         temp = "true"
         jsonreturn = [{"result":temp}]
