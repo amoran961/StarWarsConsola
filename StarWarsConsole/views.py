@@ -159,7 +159,7 @@ def ranking(request):
         ranking_temp = Record.objects.all()
         for r in ranking_temp:
             r.record = int(r.record)
-        sorted(ranking_temp, key=lambda r:int(r.record),reverse=True)
+        sorted(ranking_temp, key=lambda x:x[1],reverse=True)
         #ranking_temp = Record.objects.order_by("-record")
         for r in ranking_temp:
             r.record = str(r.record)
