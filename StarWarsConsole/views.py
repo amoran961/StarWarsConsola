@@ -156,7 +156,7 @@ def register_record(request):
 @api_view(['POST'])
 def ranking(request):
     if request.method == 'POST':
-        ranking_temp=Record.objects.all().order_by(int('-record'))
+        ranking_temp=Record.objects.all().order_by('-int(record)')
 #        ranking_temp = Record.objects.all()
 #        ranking_temp_1=[]
 #        for r in ranking_temp:
