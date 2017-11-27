@@ -157,27 +157,11 @@ def register_record(request):
 def ranking(request):
     if request.method == 'POST':
         ranking_temp=Record.objects.all()
-        temp_ranking = []
         for r in ranking_temp:
             r.record=int(r.record)
         temp_ranking=sorted(ranking_temp, key=lambda x:x.record, reverse=True)
-#        ranking_temp = Record.objects.all()
-#        ranking_temp_1=[]
-#        for r in ranking_temp:
-#            r.record=int(r.record)
-#            ranking_temp_1.append(r)
-
-#        sorted(ranking_temp_1, key=lambda x:x.record, reverse=True)
-#        total = len(ranking_temp_1)
-#        ranking_temp_orden_1 = []
-#        ranking_temp_orden_2= []
-#        for r in ranking_temp:
-#           r.record = int(r.record)
-#            ranking_temp_orden_1.append(r.record)
-#        sorted(ranking_temp_orden, key=lambda x:x.record)
-#        ranking_temp_orden_2 = ranking_temp_orden_1.objects.order_by("-record")
-#        for r in ranking_temp:
-#            r.record = str(r.record)
+        for r in ranking_temp:
+            r.record=str(r.record)
         total = len(temp_ranking)
         i = 0
         ranking = []
