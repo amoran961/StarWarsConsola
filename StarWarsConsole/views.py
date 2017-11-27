@@ -156,12 +156,17 @@ def register_record(request):
 @api_view(['POST'])
 def ranking(request):
     if request.method == 'POST':
-        ranking_temp=Record.objects.all().order_by('-int(record)')
+        ranking_temp=Record.objects.all()
+        temp_ranking = []
+        for r in ranking_temp:
+            r.record=int(r.record)
+        temp_ranking=sorted(ranking_temp, key=lambda x:x.record, reverse=True)
 #        ranking_temp = Record.objects.all()
 #        ranking_temp_1=[]
 #        for r in ranking_temp:
 #            r.record=int(r.record)
 #            ranking_temp_1.append(r)
+
 #        sorted(ranking_temp_1, key=lambda x:x.record, reverse=True)
 #        total = len(ranking_temp_1)
 #        ranking_temp_orden_1 = []
@@ -181,13 +186,13 @@ def ranking(request):
             jsonreturn = [{"result":temp}]
         else:
             if total < 11:
-                for record in ranking_temp:
+                for record in temp_ranking:
                     i=i+1
                     ranking.append(i)
                     ranking.append(record.user.username)
                     ranking.append(record.record)
             else:
-                for record in ranking_temp:
+                for record in temp_ranking:
                     if i < 10:
                         i=i+1
                         ranking.append(i)
