@@ -160,8 +160,8 @@ def ranking(request):
         for r in ranking_temp:
             r.record = int(r.record)
         sorted(ranking_temp, key=attrgetter("record"),reverse=True)
-#        ranking_temp = Record.objects.order_by("-record")
-        for r in ranking_temp:
+        ranking_temp = Record.objects.order_by("-record")
+#        for r in ranking_temp:
             r.record = str(r.record)
         total = len(ranking_temp)
         i = 0
