@@ -178,7 +178,7 @@ def ranking(request):
 #        ranking_temp_orden_2 = ranking_temp_orden_1.objects.order_by("-record")
 #        for r in ranking_temp:
 #            r.record = str(r.record)
-#        total = len(ranking_temp_orden)
+        total = len(temp_ranking)
         i = 0
         ranking = []
         if total == 0:
