@@ -160,8 +160,8 @@ def ranking(request):
         for r in ranking_temp:
             r.record = int(r.record)
             ranking_temp_orden.append(r.record)
-        sorted(ranking_temp_orden, key=lambda x:x.record)
-#        ranking_temp = Record.objects.order_by("-record")
+#        sorted(ranking_temp_orden, key=lambda x:x.record)
+        ranking_temp_orden = Record.objects.order_by("-record")
 #        for r in ranking_temp:
 #            r.record = str(r.record)
         total = len(ranking_temp_orden)
