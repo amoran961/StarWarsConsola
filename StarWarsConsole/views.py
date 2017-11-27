@@ -157,30 +157,35 @@ def register_record(request):
 def ranking(request):
     if request.method == 'POST':
         ranking_temp = Record.objects.all()
-        ranking_temp_orden_1 = []
-        ranking_temp_orden_2= []
         for r in ranking_temp:
-            r.record = int(r.record)
-            ranking_temp_orden_1.append(r.record)
+            r.record=int(r.record)
+        sorted(ranking_temp, key=lambda x:x.record)
+        total = len(ranking_temp)
+#        ranking_temp_orden_1 = []
+#        ranking_temp_orden_2= []
+#        for r in ranking_temp:
+#           r.record = int(r.record)
+#            ranking_temp_orden_1.append(r.record)
 #        sorted(ranking_temp_orden, key=lambda x:x.record)
-        ranking_temp_orden_2 = ranking_temp_orden_1.objects.order_by("-record")
+#        ranking_temp_orden_2 = ranking_temp_orden_1.objects.order_by("-record")
 #        for r in ranking_temp:
 #            r.record = str(r.record)
-        total = len(ranking_temp_orden)
+#        total = len(ranking_temp_orden)
         i = 0
         ranking = []
+
         if total == 0:
             temp="false"
             jsonreturn = [{"result":temp}]
         else:
             if total < 11:
-                for record in ranking_temp_orden_2:
+                for record in ranking_temp:
                     i=i+1
                     ranking.append(i)
                     ranking.append(record.user.username)
                     ranking.append(record.record)
             else:
-                for record in ranking_temp_orden_2:
+                for record in ranking_temp:
                     if i < 10:
                         i=i+1
                         ranking.append(i)
