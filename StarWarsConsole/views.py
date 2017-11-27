@@ -161,6 +161,8 @@ def ranking(request):
             r.record = int(r.record)
         sorted(ranking_temp, key=lambda r:r.record,reverse=True)
         #ranking_temp = Record.objects.order_by("-record")
+        for r in ranking_temp:
+            r.record = str(r.record)
         total = len(ranking_temp)
         i = 0
         ranking = []
