@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+<h1 style="color:white">Registrar nuevo usuario</h1>
+{% block head %}<h2 style="color:white">Registrar nuevo usuario</h2>{% endblock %}
+{% block content %}
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0" style="color:white">
+            {{ form.as_table }}
+        </table>
+        <input type="submit" value="Registrar" />
+    </form>
+    <a href="/StarWarsConsole/accounts/login">Login</a>
+
+    <style>
+      body{
+        background: url(https://wallpapertag.com/wallpaper/middle/0/c/1/338924-popular-star-wars-hd-wallpaper-1920x1200.jpg) no-repeat center center fixed;
+        background-size: cover;
+      }
+    </style>
+
+{% endblock %}
