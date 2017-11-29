@@ -72,7 +72,7 @@ def configuration(request):
             configuration=Configuration.objects.filter(id=1)
             if not configuration:
                 configurationtemp=Configuration.objects.create(
-                mision=form.cleaned_data['mision'],
+                mision="Ataque a la Estrella de la Muerte",
                 bando=form.cleaned_data['bando'],
                 dificultad=form.cleaned_data['dificultad'],
                 )
