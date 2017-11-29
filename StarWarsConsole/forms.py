@@ -1,3 +1,5 @@
+# This Python file uses the following encoding: utf-8
+
 import re
 from django import forms
 from django.contrib.auth.models import User
