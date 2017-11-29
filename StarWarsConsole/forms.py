@@ -28,8 +28,8 @@ class LoginForm(forms.Form):
 
 #revisar el campo choices y cleaned data
 class ConfigurationForm(forms.Form):
-    CHOICESM = [("Asalto a la luna de Endor", "Asalto a la luna de Endor"), ("Ataque a la Estrella de la Muerte", "Ataque a la Estrella de la Muerte")]
-    mision = forms.ChoiceField(widget=forms.Select, choices=CHOICESM, label=_("Mision"))
+#    CHOICESM = [("Asalto a la luna de Endor", "Asalto a la luna de Endor"), ("Ataque a la Estrella de la Muerte", "Ataque a la Estrella de la Muerte")]
+#    mision = forms.ChoiceField(widget=forms.Select, choices=CHOICESM, label=_("Mision"))
     CHOICESB = [("Rebeldes", "Rebeldes"), ("Imperio", "Imperio")]
     bando = forms.ChoiceField(widget=forms.Select, choices=CHOICESB, label=_("Bando"))
     CHOICESD = [("Fácil", "Fácil"), ("Intermedio", "Intermedio"), ("Difícil", "Difícil")]

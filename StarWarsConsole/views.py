@@ -78,7 +78,7 @@ def configuration(request):
                 )
             else:
                 configuration=Configuration.objects.get(id=1)
-                configuration.mision = form.cleaned_data['mision']
+                configuration.mision = "Ataque a la Estrella de la Muerte"
                 configuration.bando = form.cleaned_data['bando']
                 configuration.dificultad = form.cleaned_data['dificultad']
                 configuration.save()
