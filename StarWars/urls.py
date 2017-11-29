@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from StarWarsConsole.views import authlogin
 
 urlpatterns = [ url(r'^accounts/login/$', authlogin, name='login'),
     url(r'^StarWarsConsole/', include('StarWarsConsole.urls')),
